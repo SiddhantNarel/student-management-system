@@ -25,7 +25,10 @@ public class StudentManagementApp {
         try {
             Connection connection = DatabaseConnection.getInstance().getConnection();
             studentDAO = new StudentDAO(connection);
-            new File("reports").mkdirs();
+            File reportsDir = new File("reports");
+            if (!reportsDir.exists() && !reportsDir.mkdirs()) {
+                System.err.println("Warning: Could not create reports directory.");
+            }
 
             System.out.println("=== Student Management System ===");
 

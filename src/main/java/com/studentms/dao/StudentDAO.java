@@ -156,7 +156,7 @@ public class StudentDAO {
                 rs.getString("email"),
                 rs.getString("course"),
                 rs.getDouble("grade"),
-                rs.getDate("enrollment_date").toLocalDate()
+                rs.getDate("enrollment_date") != null ? rs.getDate("enrollment_date").toLocalDate() : LocalDate.now()
         );
     }
 }
